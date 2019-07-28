@@ -1,0 +1,48 @@
+@import "../../layout/theme.scss";
+
+.index-ad {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.custom-ad-placeholder {
+  align-items: center;
+  border: 1px dashed rgba($theme-black, 0.1);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.custom-ad-message {
+  color: rgba($theme-black, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 0;
+}
+
+.index-ad-title {
+  border-bottom: 5px double;
+  border-top: 5px double;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.ad-desktop-wide {
+  flex-direction: column;
+
+  .index-ad-title {
+    margin: 1rem 0;
+  }
+}
+
+.ad-placeholder {
+  position: relative;
+  z-index: 1;
+}

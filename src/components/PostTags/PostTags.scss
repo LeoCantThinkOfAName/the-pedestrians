@@ -1,0 +1,19 @@
+@import "../../layout/theme.scss";
+
+.post-tag-container {
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+.post-preview-tags {
+  font-size: 0.8rem;
+  font-weight: bolder;
+  display: inline-block;
+  margin: 2px 10px 2px 0;
+
+  &::before {
+    content: "#";
+    display: inline-block;
+    margin-right: 2px;
+  }
+}

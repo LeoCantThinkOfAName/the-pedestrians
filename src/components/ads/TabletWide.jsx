@@ -1,13 +1,13 @@
 import React from "react";
 
-const MobileWide = () => {
+const TabletWide = () => {
   return (
     <div className="index-post index-ad ad-mobile-wide">
       <h5 className="index-ad-title">Advertisements</h5>
       <div className="index-ad-wrapper">
         <div
           className="custom-ad-placeholder"
-          style={{ width: 300, height: 50 }}
+          style={{ width: 460, height: 200 }}
         >
           <div className="custom-ad-message">
             You disabled It! QwQ
@@ -21,4 +21,4 @@ const MobileWide = () => {
   );
 };
 
-export default MobileWide;
+export default TabletWide;

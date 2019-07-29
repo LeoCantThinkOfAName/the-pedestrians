@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { css, jsx } from "@emotion/core";
 import Img from "gatsby-image";
 import path from "path";
 import "./PostCover.scss";
 
 class PostCover extends Component {
   render() {
-    const { fileEdges, postNode, coverHeight, coverClassName } = this.props;
+    const { fileEdges, postNode, coverClassName } = this.props;
+    const { imageSize } = postNode;
     const post = postNode.frontmatter ? postNode.frontmatter : postNode;
     const coverNodeList = fileEdges.filter(fileNode => {
       if (fileNode.node.childImageSharp === null) return false;
@@ -25,7 +27,16 @@ class PostCover extends Component {
         <Img
           fluid={coverNodeList[0].node.childImageSharp.fluid}
           outerWrapperClassName={coverClassName}
-          style={{ height: coverHeight, width: "100%" }}
+          css={css`
+            height: 300px;
+            width: 100%;
+            @media (min-width: 400px) {
+              height: 400px;
+            }
+            @media (min-width: 800px) {
+              height: ${imageSize}px;
+            }
+          `}
         />
       );
     }
@@ -37,10 +48,10 @@ class PostCover extends Component {
         : post.cover;
     return (
       <div
-        style={{
-          backgroundImage: `url(${coverURL})`,
-          height: `${coverHeight}px`,
-        }}
+        css={css`
+          backgroundImage: url(${coverURL}),
+          height: ${imageSize}px,
+        `}
         className={coverClassName}
       />
     );

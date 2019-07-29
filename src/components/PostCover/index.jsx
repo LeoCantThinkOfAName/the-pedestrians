@@ -4,7 +4,7 @@ import PostCover from "./PostCoverComponent";
 
 class queryWrapper extends Component {
   render() {
-    const { postNode, coverHeight, coverClassName } = this.props;
+    const { postNode, coverClassName } = this.props;
     return (
       <StaticQuery
         query={graphql`
@@ -47,7 +47,6 @@ class queryWrapper extends Component {
           <PostCover
             fileEdges={data.allFile.edges}
             postNode={postNode}
-            coverHeight={coverHeight}
             coverClassName={coverClassName}
           />
         )}

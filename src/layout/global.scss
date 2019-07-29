@@ -7,7 +7,7 @@
 
 body {
   background: $theme-bg;
-  padding: 20px;
+  padding: 10px;
 }
 
 a {
@@ -40,26 +40,33 @@ a {
 
 .index-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(6, minmax(300px, auto));
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, minmax(300px, auto));
   grid-template-areas:
-    "headline headline headline"
-    "headline headline headline"
-    "ad1      first    first"
-    "ad1      second   second"
-    "third    third   fourth"
-    "fifth    fifth   fourth"
-    "ad2      ad2      ad2";
+    "headline"
+    "first"
+    "ad1"
+    "second"
+    "third"
+    "fourth"
+    "fifth"
+    "ad2";
   padding: 20px 0;
 }
 
 .index-post {
   @each $post in $index-posts {
     $i: index($index-posts, $post);
-    padding: 10px;
+    padding: 10px 0;
 
     &:nth-of-type(#{$i}) {
       grid-area: $post;
     }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .index-post {
+    padding: 10px;
   }
 }

@@ -3,8 +3,7 @@ import PostPreview from "../PostPreview";
 
 class PostListing extends React.Component {
   getPostList() {
-    const { postEdges } = this.props;
-    const arr = [950, 500, 200, 500, 200, 200];
+    const { postEdges, grid } = this.props;
     const postList = [];
     postEdges.forEach((postEdge, index) => {
       const { node } = postEdge;
@@ -17,7 +16,7 @@ class PostListing extends React.Component {
         date: node.fields.date,
         excerpt: node.excerpt,
         timeToRead: node.timeToRead,
-        coverSize: arr[index],
+        imageSize: grid.sizes[index],
       });
     });
     return postList;

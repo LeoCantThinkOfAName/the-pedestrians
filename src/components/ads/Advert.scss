@@ -4,7 +4,12 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.index-ad-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .custom-ad-placeholder {
@@ -14,6 +19,7 @@
   justify-content: center;
   text-align: center;
   position: relative;
+  margin: 10px 0;
 }
 
 .custom-ad-message {
@@ -45,4 +51,20 @@
 .ad-placeholder {
   position: relative;
   z-index: 1;
+}
+
+@media screen and (min-width: 640px) {
+  .custom-ad-placeholder {
+    margin: 10px;
+  }
+
+  .index-ad-wrapper {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .index-ad-wrapper {
+    flex-direction: column;
+  }
 }

@@ -21,12 +21,22 @@ class En extends React.Component {
 
   componentWillMount() {
     const gridsArr = [
-      "'headline headline first''headline headline first''headline headline ad1''second   second   ad1''third    fourth   fourth''third    fifth    fifth''ad2      ad2      ad2'",
-      "'headline headline headline''headline headline headline''ad1      first    first''ad1      second   second''third    third   fourth''fifth    fifth   fourth''ad2      ad2      ad2'",
+      {
+        sizes: [900, 700, 300, 700, 300, 300],
+        areas:
+          "'headline headline first''headline headline first''headline headline ad1''second   second   ad1''third    fourth   fourth''third    fifth    fifth''ad2      ad2      ad2'",
+      },
+      {
+        sizes: [700, 300, 300, 300, 700, 300],
+        areas:
+          "'headline headline headline''headline headline headline''ad1      first    first''ad1      second   second''third    third   fourth''fifth    fifth   fourth''ad2      ad2      ad2'",
+      },
     ];
 
+    const randomNum = Math.floor(Math.random() * gridsArr.length);
+
     this.setState({
-      grid: gridsArr[1],
+      grid: gridsArr[randomNum],
     });
   }
 
@@ -40,7 +50,11 @@ class En extends React.Component {
         <div
           className="index-container"
           css={css`
-            grid-template-areas: ${grid};
+            @media (min-width: 800px) {
+              grid-template-columns: 1fr 1fr 1fr;
+              grid-template-rows: repeat(6, minmax(300px, auto));
+              grid-template-areas: ${grid.areas};
+            }
           `}
         >
           <Helmet>
@@ -48,7 +62,7 @@ class En extends React.Component {
             <link rel="canonical" href={`${config.siteUrl}`} />
           </Helmet>
           <SEO postEdges={postEdges} />
-          <PostListing postEdges={postEdges} />
+          <PostListing postEdges={postEdges} grid={grid} />
           <Advertisements />
         </div>
       </Layout>

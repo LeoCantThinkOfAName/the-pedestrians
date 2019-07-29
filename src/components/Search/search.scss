@@ -1,5 +1,10 @@
 @import "../../layout/theme.scss";
 
+.custom-search {
+  width: 100%;
+  text-align: left;
+}
+
 .search-modal {
   background: $theme-bg;
   position: fixed;
@@ -112,7 +117,6 @@
 }
 
 .searchbox-wrapper {
-  padding-left: 0.5rem;
   position: relative;
 }
 
@@ -136,4 +140,10 @@
 .searchbox-underline {
   border-bottom: 1px solid rgba($theme-black, 0.3);
   transition: 0.2s ease-in-out;
+}
+
+@media screen and (min-width: 460px) {
+  .custom-search {
+    width: auto;
+  }
 }

@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import moment from "moment";
 import PostTags from "../PostTags";
 import PostCover from "../PostCover";
-import config from "../../../data/SiteConfig";
 import "./PostPreview.scss";
 
 class PostPreview extends Component {
@@ -13,7 +12,7 @@ class PostPreview extends Component {
     return (
       <div className="index-post">
         <Link to={`/${postInfo.lang}/${postInfo.path}`} title={postInfo.title}>
-          <PostCover postNode={postInfo} coverHeight={postInfo.coverSize} />
+          <PostCover postNode={postInfo} />
         </Link>
         <div className="post-preview-info">
           <Link

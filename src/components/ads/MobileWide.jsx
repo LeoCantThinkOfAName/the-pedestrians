@@ -2,7 +2,7 @@ import React from "react";
 
 const MobileWide = () => {
   return (
-    <div className="index-post index-ad ad-mobile-wide">
+    <div className="single-post index-ad ad-mobile-wide">
       <h5 className="index-ad-title">Advertisements</h5>
       <div className="index-ad-wrapper">
         <div

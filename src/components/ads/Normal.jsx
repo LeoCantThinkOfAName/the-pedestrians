@@ -2,7 +2,7 @@ import React from "react";
 
 const Normal = () => {
   return (
-    <div className="index-post index-ad">
+    <div className="single-post index-ad">
       <h5 className="index-ad-title">Advertisements</h5>
       <div className="index-ad-wrapper">
         <div

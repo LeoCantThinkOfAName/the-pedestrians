@@ -10,8 +10,12 @@ class PostPreview extends Component {
     const { postInfo } = this.props;
 
     return (
-      <div className="index-post">
-        <Link to={`/${postInfo.lang}/${postInfo.path}`} title={postInfo.title}>
+      <div className="single-post">
+        <Link
+          to={`/${postInfo.lang}/${postInfo.path}`}
+          title={postInfo.title}
+          className="post-cover-link"
+        >
           <PostCover postNode={postInfo} />
         </Link>
         <div className="post-preview-info">
@@ -26,8 +30,8 @@ class PostPreview extends Component {
             {moment(postInfo.date).format("MMM ww, YYYY")}
           </p>
           <p>{postInfo.excerpt}</p>
+          <PostTags tags={postInfo.tags} lang={postInfo.lang} />
         </div>
-        <PostTags tags={postInfo.tags} lang={postInfo.lang} />
       </div>
     );
   }

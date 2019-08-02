@@ -16,6 +16,7 @@ class PostListing extends React.Component {
         date: node.fields.date,
         excerpt: node.excerpt,
         timeToRead: node.timeToRead,
+        imageSize: grid && grid.sizes[index],
       });
     });
     return postList;

@@ -4,7 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  padding: 0 !important;
+  padding: 0;
 }
 
 .post-preview-info {
@@ -31,5 +31,34 @@
     color: rgba($theme-black, 0.8);
     font-size: 0.8rem;
     margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .tag-container {
+    .single-post {
+      align-items: center;
+      border-bottom: 1px solid rgba($theme-black, 0.25);
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 0;
+
+      &:nth-of-type(even) {
+        .post-cover-link {
+          order: 2;
+        }
+      }
+    }
+
+    .post-cover-link {
+      display: block;
+      height: 100%;
+      width: 100%;
+      min-width: 400px;
+    }
+
+    .post-preview-info {
+      padding: 1rem;
+    }
   }
 }

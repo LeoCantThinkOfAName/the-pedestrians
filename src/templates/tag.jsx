@@ -7,18 +7,22 @@ import config from "../../data/SiteConfig";
 
 export default class TagTemplate extends React.Component {
   render() {
-    const { tag } = this.props.pageContext;
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const { pageContext, data, location } = this.props;
+    const { tag, lang } = pageContext;
+    const postEdges = data.allMarkdownRemark.edges;
 
     return (
       <Layout
-        location={this.props.location}
+        location={location}
         title={`Tagged in ${tag.charAt(0).toUpperCase() + tag.slice(1)}`}
       >
         <div className="tag-container">
           <Helmet>
             <title>{`Posts tagged as "${tag}" | ${config.siteTitle}`}</title>
-            <link rel="canonical" href={`${config.siteUrl}/tags/${tag}`} />
+            <link
+              rel="canonical"
+              href={`${config.siteUrl}/${lang}/tags/${tag}`}
+            />
           </Helmet>
           <PostListing postEdges={postEdges} />
         </div>
@@ -28,11 +32,11 @@ export default class TagTemplate extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
+  query TagPage($tag: String, $lang: String) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] }, lang: { eq: $lang } } }
     ) {
       totalCount
       edges {
@@ -44,6 +48,7 @@ export const pageQuery = graphql`
           excerpt
           timeToRead
           frontmatter {
+            lang
             title
             tags
             cover

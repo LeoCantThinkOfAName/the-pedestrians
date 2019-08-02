@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { css } from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 import Img from "gatsby-image";
 import path from "path";
 import "./PostCover.scss";
 
-class PostCover extends Component {
+class InPostCover extends Component {
   render() {
     const { fileEdges, postNode, coverClassName } = this.props;
     const { imageSize } = postNode;
@@ -27,16 +27,6 @@ class PostCover extends Component {
         <Img
           fluid={coverNodeList[0].node.childImageSharp.fluid}
           outerWrapperClassName={coverClassName}
-          css={css`
-            height: 300px;
-            width: 100%;
-            @media (min-width: 400px) {
-              height: 400px;
-            }
-            @media (min-width: 800px) {
-              height: ${imageSize}px;
-            }
-          `}
         />
       );
     }
@@ -58,4 +48,4 @@ class PostCover extends Component {
   }
 }
 
-export default PostCover;
+export default InPostCover;

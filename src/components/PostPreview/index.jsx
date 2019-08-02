@@ -27,7 +27,7 @@ class PostPreview extends Component {
           </p>
           <p>{postInfo.excerpt}</p>
         </div>
-        <PostTags tags={postInfo.tags} />
+        <PostTags tags={postInfo.tags} lang={postInfo.lang} />
       </div>
     );
   }

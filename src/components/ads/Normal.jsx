@@ -27,7 +27,6 @@ const Normal = () => {
           </div>
           <div className="ad-placeholder" />
         </div>
-        <div />
       </div>
     </div>
   );

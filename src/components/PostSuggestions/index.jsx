@@ -4,22 +4,36 @@ import "./PostSuggestions.scss";
 
 export default class PostSuggestions extends Component {
   render() {
-    const { prevSlug, prevTitle, nextSlug, nextTitle } = this.props;
+    const { prevSlug, prevTitle, nextSlug, nextTitle, lang } = this.props;
 
     return (
       <div className="post-suggestions md-grid md-cell--12">
-        <Link to={prevSlug} className="post-suggestion">
-          <div className="headline-container hide-on-mobile">
-            <h2 className="md-body-2 secondary-color">Previous</h2>
-            <h6 className="md-headline secondary-color">{prevTitle}</h6>
-          </div>
-        </Link>
-        <Link to={nextSlug} className="post-suggestion">
-          <div className="headline-container">
-            <h2 className="md-body-2 secondary-color">Next</h2>
-            <h6 className="md-headline secondary-color">{nextTitle}</h6>
-          </div>
-        </Link>
+        {nextSlug ? (
+          <Link
+            to={`/${lang}${nextSlug}`}
+            className="post-suggestion next-suggestion"
+          >
+            <div className="headline-container hide-on-mobile">
+              <p>Next Issue</p>
+              <h5>{nextTitle}</h5>
+            </div>
+          </Link>
+        ) : (
+          <div className="empty-link-placeholder next-empty" />
+        )}
+        {prevSlug ? (
+          <Link
+            to={`/${lang}${prevSlug}`}
+            className="post-suggestion prev-suggestion"
+          >
+            <div className="headline-container">
+              <p>Prev Issue</p>
+              <h5>{prevTitle}</h5>
+            </div>
+          </Link>
+        ) : (
+          <div className="empty-link-placeholder prev-empty" />
+        )}
       </div>
     );
   }

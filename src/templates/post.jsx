@@ -11,7 +11,6 @@ import SocialLinks from "../components/SocialLinks";
 import PostSuggestions from "../components/PostSuggestions";
 import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
-import "./b16-tomorrow-dark.css";
 import "./post.scss";
 
 export default class PostTemplate extends React.Component {
@@ -44,9 +43,15 @@ export default class PostTemplate extends React.Component {
   render() {
     const { mobile } = this.state;
     const { location, pageContext, data } = this.props;
-    const { slug, nexttitle, nextslug, prevtitle, prevslug } = pageContext;
+    const {
+      slug,
+      nexttitle,
+      nextslug,
+      prevtitle,
+      prevslug,
+      lang,
+    } = pageContext;
     const expanded = !mobile;
-    const postOverlapClass = mobile ? "post-overlap-mobile" : "post-overlap";
     const postNode = data.markdownRemark;
     const post = postNode.frontmatter;
 
@@ -57,31 +62,24 @@ export default class PostTemplate extends React.Component {
       post.category_id = config.postDefaultCategoryID;
     }
 
-    const coverHeight = mobile ? 180 : 350;
     return (
       <Layout location={location}>
-        <div className="post-page md-grid md-grid--no-spacing">
+        <div className="post-page">
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
             <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
-          <PostCover
-            postNode={postNode}
-            coverHeight={coverHeight}
-            coverClassName="md-grid md-cell--9 post-cover"
-          />
-          <div
-            className={`md-grid md-cell--9 post-page-contents mobile-fix ${postOverlapClass}`}
-          >
-            <div className="md-grid md-cell md-cell--12 post">
+          <PostCover postNode={postNode} coverClassName="post-cover" />
+          <div className="post-page-contents">
+            <div className="post">
               <div className="post-body">
-                <h1 className="md-display-2 post-header">{post.title}</h1>
+                <h1 className="post-header">{post.title}</h1>
                 <PostInfo postNode={postNode} />
                 <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               </div>
               <div className="post-meta">
-                <PostTags tags={post.tags} />
+                <PostTags tags={post.tags} lang={lang} />
                 <SocialLinks
                   postPath={slug}
                   postNode={postNode}
@@ -89,20 +87,17 @@ export default class PostTemplate extends React.Component {
                 />
               </div>
             </div>
-            <UserInfo
-              className="md-grid md-cell md-cell--12"
-              config={config}
-              expanded={expanded}
+            <UserInfo config={config} expanded={expanded} />
+
+            <PostSuggestions
+              prevSlug={prevslug}
+              prevTitle={prevtitle}
+              nextSlug={nextslug}
+              nextTitle={nexttitle}
+              lang={lang}
             />
             <Disqus postNode={postNode} expanded={expanded} />
           </div>
-
-          <PostSuggestions
-            prevSlug={prevslug}
-            prevTitle={prevtitle}
-            nextSlug={nextslug}
-            nextTitle={nexttitle}
-          />
         </div>
       </Layout>
     );

@@ -4,10 +4,10 @@ title: "Introducing Gatsby Material Starter"
 cover: "starter-logo-1024.png"
 category: "gatsby"
 tags:
-
     - gatsby
     - material
     - starter
+    - tag
 
 date: "2018-07-02"
 ---

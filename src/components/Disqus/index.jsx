@@ -39,7 +39,7 @@ class Disqus extends Component {
     return (
       <div className="md-grid md-cell md-cell--12">
         <div title="Comments" />
-        <div expandable={!expanded}>
+        <div expandable={`${!expanded}`}>
           <ReactDisqusComments
             shortname={config.disqusShortname}
             identifier={post.title}

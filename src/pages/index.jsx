@@ -8,9 +8,10 @@ import config from "../../data/SiteConfig";
 
 class Index extends React.Component {
   render() {
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const { data, location } = this.props;
+    const postEdges = data.allMarkdownRemark.edges;
     return (
-      <Layout location={this.props.location} title="Home">
+      <Layout location={location} title="Home">
         <div className="index-container">
           <Helmet>
             <title>{config.siteTitle}</title>
@@ -41,6 +42,7 @@ export const pageQuery = graphql`
           excerpt
           timeToRead
           frontmatter {
+            lang
             title
             tags
             cover

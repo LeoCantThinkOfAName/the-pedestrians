@@ -8,7 +8,7 @@ import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 
 // components
-import Advertisements from "../components/ads";
+import Advertisements from "../components/Ads";
 
 class En extends React.Component {
   constructor(props) {

@@ -5,13 +5,14 @@ import "./PostTags.scss";
 
 class PostTags extends Component {
   render() {
-    const { tags } = this.props;
+    const { tags, lang } = this.props;
+
     return (
       <ul className="post-tag-container">
         {tags &&
           tags.map(tag => (
             <li key={tag} className="post-preview-tags">
-              <Link to={`/tags/${_.kebabCase(tag)}`}>{tag}</Link>
+              <Link to={`/${lang}/tags/${_.kebabCase(tag)}`}>{tag}</Link>
             </li>
           ))}
       </ul>

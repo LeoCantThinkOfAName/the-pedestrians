@@ -1,34 +1,63 @@
 @import "../../layout/theme.scss";
 
+.empty-link-placeholder {
+  display: inline-flex;
+  width: 50%;
+}
+
+.next-empty {
+  border-right: 1px solid;
+}
+
+.prev-empty {
+  border-left: 1px solid;
+}
+
 .post-suggestions {
   display: flex;
-  flex-wrap: nowrap !important;
-  justify-content: space-between;
-  background-color: darken(red, 5%);
+  padding: 1rem 0 2rem;
+}
 
-  .hide-on-mobile {
-    @media (max-width: 360px - 1px) {
-      display: none;
-    }
+.post-suggestion {
+  width: 50%;
+  display: inline-block;
+  text-decoration: none;
+
+  p {
+    background: $theme-black;
+    color: $theme-bg;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    margin: 0;
+    margin-bottom: 0.25rem;
   }
 
-  .post-suggestion {
-    display: flex;
-    align-items: center;
-    margin: 0 15px;
-    color: red !important;
-
-    .headline-container {
-      margin-right: 10px;
-      margin-left: 10px;
-    }
-
-    .arrow-nav {
-      margin-top: 15px;
-    }
+  h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
-  .secondary-color {
-    color: red !important;
+  &:nth-of-type(2) {
+    border-left: 1px solid;
   }
+
+  &:hover {
+    color: initial;
+  }
+}
+
+.prev-suggestion {
+  text-align: right;
+}
+
+.next-suggestion {
+  text-align: left;
 }

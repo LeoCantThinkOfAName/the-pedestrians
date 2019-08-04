@@ -7,7 +7,7 @@ media_folder: static/assets
 public_folder: assets
 
 collections:
-  - label: "中文版"
+  - label: "zh-TW"
     name: "tw-post"
     folder: "content"
     filter: {field: "language", value: "zh-TW"}
@@ -22,7 +22,7 @@ collections:
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - label: "英文版"
+  - label: "en"
     name: "en-post"
     folder: "content"
     filter: {field: "language", value: "en"}

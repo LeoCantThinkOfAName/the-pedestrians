@@ -10,11 +10,11 @@ collections:
   - label: "zh-TW"
     name: "tw-post"
     folder: "content"
-    filter: {field: "language", value: "zh-TW"}
+    filter: {field: "lang", value: "zh-TW"}
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
     fields:
-      - {label: "Language", name: "language", widget: "string" options: ["en", "zh-TW"]}
+      - {label: "Language", name: "lang", widget: "string" options: ["en", "zh-TW"]}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Cover Image", name: "cover", widget: "image"}
@@ -25,11 +25,11 @@ collections:
   - label: "en"
     name: "en-post"
     folder: "content"
-    filter: {field: "language", value: "en"}
+    filter: {field: "lang", value: "en"}
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
     fields:
-      - {label: "Language", name: "language", widget: "string" options: ["en", "zh-TW"]}
+      - {label: "Language", name: "lang", widget: "string" options: ["en", "zh-TW"]}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Cover Image", name: "cover", widget: "image"}

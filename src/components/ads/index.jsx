@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { Component } from "react";
 import "./Advert.scss";
 
 // components
@@ -7,23 +7,30 @@ import DesktopWide from "./DesktopWide";
 import MobileWide from "./MobileWide";
 import TabletWide from "./TabletWide";
 
-const Advertisements = () => {
-  const [size, setSize] = useState(0);
-  const inter = useRef(undefined);
+export default class Advertisements extends Component {
+  constructor() {
+    super();
 
-  const detectSize = width => {
-    setSize(width);
-  };
+    this.state = {
+      size: 0,
+    };
+    this.inter = React.createRef();
+  }
 
-  const resizing = () => {
-    clearTimeout(inter.current);
+  detectSize(width) {
+    this.setSize(width);
+  }
 
-    inter.current = setTimeout(() => {
-      setSize(window.innerWidth);
+  resizing() {
+    clearTimeout(this.inter.current);
+
+    this.inter.current = setTimeout(() => {
+      this.setSize(window.innerWidth);
     }, 500);
-  };
+  }
 
-  const displayBottomAd = () => {
+  displayBottomAd() {
+    const { size } = this.state;
     if (size > 990) {
       return <DesktopWide />;
     }
@@ -31,25 +38,25 @@ const Advertisements = () => {
       return <TabletWide />;
     }
     return <MobileWide />;
-  };
+  }
 
-  useEffect(() => {
+  componetDidMount() {
     const windowWidth = window.innerWidth;
-    detectSize(windowWidth);
+    this.detectSize(windowWidth);
 
-    window.addEventListener("resize", resizing, false);
+    window.addEventListener("resize", this.resizing, false);
 
     return () => {
-      window.removeEventListener("resize", resizing);
+      window.removeEventListener("resize", this.resizing);
     };
-  });
+  }
 
-  return (
-    <>
-      <Normal />
-      {displayBottomAd()}
-    </>
-  );
-};
-
-export default Advertisements;
+  render() {
+    return (
+      <>
+        <Normal />
+        {this.displayBottomAd()}
+      </>
+    );
+  }
+}

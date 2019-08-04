@@ -10,30 +10,40 @@ collections:
   - label: "中文版"
     name: "tw-post"
     folder: "content"
-    filter: {field: "lang", value: "zh-TW"}
+    filter: { field: "lang", value: "zh-TW" }
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
     fields:
-      - {label: "Language", name: "lang", widget: "string" options: ["en", "zh-TW"]}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Cover Image", name: "cover", widget: "image"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {
+          label: "Language",
+          name: "lang",
+          widget: "string",
+          options: ["en", "zh-TW"],
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
   - label: "英文版"
     name: "en-post"
     folder: "content"
-    filter: {field: "lang", value: "en"}
+    filter: { field: "lang", value: "en" }
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
     fields:
-      - {label: "Language", name: "lang", widget: "string" options: ["en", "zh-TW"]}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Cover Image", name: "cover", widget: "image"}
-      - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Category", name: "category", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {
+          label: "Language",
+          name: "lang",
+          widget: "string",
+          options: ["en", "zh-TW"],
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }

@@ -17,7 +17,7 @@ collections:
       - {
           label: "Language",
           name: "lang",
-          widget: "string",
+          widget: "select",
           options: ["en", "zh-TW"],
         }
       - { label: "Title", name: "title", widget: "string" }
@@ -37,7 +37,7 @@ collections:
       - {
           label: "Language",
           name: "lang",
-          widget: "string",
+          widget: "select",
           options: ["en", "zh-TW"],
         }
       - { label: "Title", name: "title", widget: "string" }

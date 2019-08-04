@@ -63,7 +63,7 @@ class Index extends React.Component {
           </Helmet>
           <SEO postEdges={postEdges} />
           <PostListing postEdges={postEdges} grid={grid} />
-          <Advertisements />
+          {/* <Advertisements /> */}
         </div>
       </Layout>
     );

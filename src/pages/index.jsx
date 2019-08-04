@@ -8,7 +8,6 @@ import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 
 // components
-import Advertisements from "../components/Ads";
 
 class Index extends React.Component {
   constructor(props) {
@@ -63,7 +62,6 @@ class Index extends React.Component {
           </Helmet>
           <SEO postEdges={postEdges} />
           <PostListing postEdges={postEdges} grid={grid} />
-          {/* <Advertisements /> */}
         </div>
       </Layout>
     );

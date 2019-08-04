@@ -45,7 +45,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
-  const categoryPage = path.resolve("src/templates/category.jsx");
 
   const markdownQueryResult = await graphql(
     `
@@ -57,6 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
+                lang
                 title
                 tags
                 category
@@ -101,10 +101,6 @@ exports.createPages = async ({ graphql, actions }) => {
       edge.node.frontmatter.tags.forEach(tag => {
         tagSet.add(tag);
       });
-    }
-
-    if (edge.node.frontmatter.category) {
-      categorySet.add(edge.node.frontmatter.category);
     }
 
     const nextID = index + 1 < postsEdges.length ? index + 1 : 0;

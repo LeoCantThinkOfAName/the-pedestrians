@@ -9,7 +9,7 @@ import "./global.scss";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-export default class MainLayout extends React.Component {
+class MainLayout extends React.Component {
   render() {
     const { children, title } = this.props;
     return (
@@ -32,3 +32,5 @@ export default class MainLayout extends React.Component {
     );
   }
 }
+
+export default MainLayout;

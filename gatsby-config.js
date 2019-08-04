@@ -66,6 +66,15 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-intl",
+      options: {
+        path: `${__dirname}/src/intl`,
+        languages: ["zh-TW", "en"],
+        defaultLanguage: "zh-TW",
+        redirect: true,
+      },
+    },
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: config.siteGATrackingID,

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import "./PostSuggestions.scss";
 
 export default class PostSuggestions extends Component {
@@ -9,10 +9,7 @@ export default class PostSuggestions extends Component {
     return (
       <div className="post-suggestions md-grid md-cell--12">
         {nextSlug ? (
-          <Link
-            to={`/${lang}${nextSlug}`}
-            className="post-suggestion next-suggestion"
-          >
+          <Link to={nextSlug} className="post-suggestion next-suggestion">
             <div className="headline-container hide-on-mobile">
               <p>Next Issue</p>
               <h5>{nextTitle}</h5>
@@ -22,10 +19,7 @@ export default class PostSuggestions extends Component {
           <div className="empty-link-placeholder next-empty" />
         )}
         {prevSlug ? (
-          <Link
-            to={`/${lang}${prevSlug}`}
-            className="post-suggestion prev-suggestion"
-          >
+          <Link to={prevSlug} className="post-suggestion prev-suggestion">
             <div className="headline-container">
               <p>Prev Issue</p>
               <h5>{prevTitle}</h5>

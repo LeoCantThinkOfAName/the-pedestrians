@@ -45,6 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
+  const categoryPage = path.resolve("src/templates/category.jsx");
 
   const markdownQueryResult = await graphql(
     `
@@ -52,12 +53,10 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark {
           edges {
             node {
-              id
               fields {
                 slug
               }
               frontmatter {
-                lang
                 title
                 tags
                 category
@@ -76,6 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const tagSet = new Set();
+  const categorySet = new Set();
 
   const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
 
@@ -96,55 +96,41 @@ exports.createPages = async ({ graphql, actions }) => {
     return 0;
   });
 
-  const recurSearch = (index, lang, direction) => {
-    // if there's no next post, return null
-    if (index >= postsEdges.length) {
-      return null;
-    }
-    if (index <= 0) {
-      return null;
-    }
-    // if the lang of next post is matched, return the index
-    if (postsEdges[index].node.frontmatter.lang === lang) {
-      return index;
-    }
-    // if the lang of next post doesn't match, search the next one (recur)
-    return recurSearch(index + direction, lang, direction);
-  };
-
   postsEdges.forEach((edge, index) => {
     if (edge.node.frontmatter.tags) {
       edge.node.frontmatter.tags.forEach(tag => {
-        tagSet.add({ tag, lang: edge.node.frontmatter.lang });
+        tagSet.add(tag);
       });
     }
 
-    const nextID = recurSearch(index - 1, edge.node.frontmatter.lang, -1);
-    const prevID = recurSearch(index + 1, edge.node.frontmatter.lang, 1);
-    const nextEdge = nextID === null ? null : postsEdges[nextID];
-    const prevEdge = prevID === null ? null : postsEdges[prevID];
+    if (edge.node.frontmatter.category) {
+      categorySet.add(edge.node.frontmatter.category);
+    }
+
+    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
+    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
+    const nextEdge = postsEdges[nextID];
+    const prevEdge = postsEdges[prevID];
 
     createPage({
-      path: `/${edge.node.frontmatter.lang}${edge.node.fields.slug}`,
+      path: edge.node.fields.slug,
       component: postPage,
       context: {
         slug: edge.node.fields.slug,
-        lang: edge.node.frontmatter.lang,
-        nexttitle: nextEdge && nextEdge.node.frontmatter.title,
-        nextslug: nextEdge && nextEdge.node.fields.slug,
-        prevtitle: prevEdge && prevEdge.node.frontmatter.title,
-        prevslug: prevEdge && prevEdge.node.fields.slug,
+        nexttitle: nextEdge.node.frontmatter.title,
+        nextslug: nextEdge.node.fields.slug,
+        prevtitle: prevEdge.node.frontmatter.title,
+        prevslug: prevEdge.node.fields.slug,
       },
     });
   });
 
   tagSet.forEach(tag => {
     createPage({
-      path: `/${tag.lang}/tags/${_.kebabCase(tag.tag)}/`,
+      path: `/tags/${_.kebabCase(tag)}/`,
       component: tagPage,
       context: {
-        tag: tag.tag,
-        lang: tag.lang,
+        tag,
       },
     });
   });

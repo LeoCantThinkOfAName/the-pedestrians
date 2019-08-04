@@ -34,7 +34,7 @@ class PostCover extends Component {
               height: 400px;
             }
             @media (min-width: 800px) {
-              height: ${imageSize}px;
+              height: ${imageSize || 800}px;
             }
           `}
         />

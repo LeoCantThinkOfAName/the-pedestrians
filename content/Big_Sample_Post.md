@@ -1,5 +1,4 @@
 ---
-lang: "en"
 title: "Big Test"
 cover: "5.jpg"
 category: "moar"

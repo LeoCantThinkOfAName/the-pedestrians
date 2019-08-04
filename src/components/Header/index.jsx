@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { Link } from "gatsby";
+import { injectIntl } from "gatsby-plugin-intl";
 
 // components
 import Logo from "./Logo";
@@ -19,7 +20,7 @@ const Header = () => {
           <Logo />
         </Link>
         <div className="title-container">
-          <h1 className="title">The Pedestrians Post</h1>
+          <h1 className="title">subtitle</h1>
         </div>
         <div className="publish-strip">
           <div>{moment().format("dddd, MMMM DD YYYY")}</div>
@@ -30,4 +31,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default injectIntl(Header);

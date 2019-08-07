@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import { Link } from "gatsby";
-import { injectIntl } from "gatsby-plugin-intl";
 
 // components
 import Logo from "./Logo";
@@ -31,4 +30,4 @@ const Header = () => {
   );
 };
 
-export default injectIntl(Header);
+export default Header;

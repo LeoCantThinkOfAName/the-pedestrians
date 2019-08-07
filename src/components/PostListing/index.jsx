@@ -7,6 +7,7 @@ class PostListing extends React.Component {
     const postList = [];
     postEdges.forEach((postEdge, index) => {
       const { node } = postEdge;
+
       postList.push({
         lang: node.frontmatter.lang,
         path: node.fields.slug,

@@ -71,12 +71,12 @@ class Index extends React.Component {
 }
 
 export default Index;
-
 export const pageQuery = graphql`
-  query IndexQuery {
+  query IndexQuery($lang: String) {
     allMarkdownRemark(
       limit: 6
       sort: { fields: [fields___date], order: DESC }
+      filter: { frontmatter: { lang: { eq: $lang } } }
     ) {
       edges {
         node {

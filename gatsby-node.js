@@ -3,6 +3,23 @@ const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
 
+// helper function
+// Remove trailing slashes unless it's only "/", then leave it as it is
+// const replaceTrailing = _path =>
+//   _path === `/` ? _path : _path.replace(/\/$/, ``);
+// // Remove slashes at the beginning and end
+// const replaceBoth = _path => _path.replace(/^\/|\/$/g, "");
+
+// // locales
+// const en = require("./src/lcocale/en.json");
+// const zhTW = require("./src/lcocale/zh-TW.json");
+
+// const locales = {
+//   en,
+//   "zh-TW": zhTW,
+// };
+// const defaultLang = "zh-TW";
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
@@ -41,6 +58,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  page.context = {
+    ...page.context,
+    lang: page.context.intl.language,
+  };
+
+  console.log(page);
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
@@ -75,7 +102,6 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const tagSet = new Set();
-  const categorySet = new Set();
 
   const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
 
@@ -96,37 +122,60 @@ exports.createPages = async ({ graphql, actions }) => {
     return 0;
   });
 
+  const recurSearch = (index, lang, direction) => {
+    // if there's no next post, return null
+    if (index >= postsEdges.length) {
+      return null;
+    }
+    if (index <= 0) {
+      return null;
+    }
+    // if the lang of next post is matched, return the index
+    if (postsEdges[index].node.frontmatter.lang === lang) {
+      return index;
+    }
+    // if the lang of next post doesn't match, search the next one (recur)
+    return recurSearch(index + direction, lang, direction);
+  };
+
   postsEdges.forEach((edge, index) => {
+    const { lang } = edge.node.frontmatter;
+
     if (edge.node.frontmatter.tags) {
       edge.node.frontmatter.tags.forEach(tag => {
-        tagSet.add(tag);
+        tagSet.add({
+          tag,
+          lang,
+        });
       });
     }
 
-    const nextID = index + 1 < postsEdges.length ? index + 1 : 0;
-    const prevID = index - 1 >= 0 ? index - 1 : postsEdges.length - 1;
-    const nextEdge = postsEdges[nextID];
-    const prevEdge = postsEdges[prevID];
+    const nextID = recurSearch(index - 1, edge.node.frontmatter.lang, -1);
+    const prevID = recurSearch(index + 1, edge.node.frontmatter.lang, 1);
+    const nextEdge = nextID === null ? null : postsEdges[nextID];
+    const prevEdge = prevID === null ? null : postsEdges[prevID];
 
     createPage({
       path: edge.node.fields.slug,
       component: postPage,
       context: {
         slug: edge.node.fields.slug,
-        nexttitle: nextEdge.node.frontmatter.title,
-        nextslug: nextEdge.node.fields.slug,
-        prevtitle: prevEdge.node.frontmatter.title,
-        prevslug: prevEdge.node.fields.slug,
+        lang: edge.node.frontmatter.lang,
+        nexttitle: nextEdge && nextEdge.node.frontmatter.title,
+        nextslug: nextEdge && nextEdge.node.fields.slug,
+        prevtitle: prevEdge && prevEdge.node.frontmatter.title,
+        prevslug: prevEdge && prevEdge.node.fields.slug,
       },
     });
   });
 
   tagSet.forEach(tag => {
     createPage({
-      path: `/tags/${_.kebabCase(tag)}/`,
+      path: `tags/${_.kebabCase(tag.tag)}`,
       component: tagPage,
       context: {
-        tag,
+        tag: tag.tag,
+        lang: tag.lang,
       },
     });
   });

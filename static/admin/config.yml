@@ -12,7 +12,7 @@ collections:
     folder: "zh-TW"
     filter: { field: "lang", value: "zh-TW" }
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {
           label: "Language",
@@ -32,7 +32,7 @@ collections:
     folder: "en"
     filter: { field: "lang", value: "en" }
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {
           label: "Language",

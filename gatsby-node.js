@@ -60,12 +60,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
+  deletePage(page);
   page.context = {
     ...page.context,
     lang: page.context.intl.language,
   };
-
-  console.log(page);
+  return createPage(page);
 };
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -86,7 +86,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 lang
                 title
                 tags
-                category
                 date
               }
             }
@@ -127,7 +126,7 @@ exports.createPages = async ({ graphql, actions }) => {
     if (index >= postsEdges.length) {
       return null;
     }
-    if (index <= 0) {
+    if (index < 0) {
       return null;
     }
     // if the lang of next post is matched, return the index

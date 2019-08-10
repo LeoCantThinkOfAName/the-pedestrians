@@ -1,6 +1,6 @@
 backend:
-  name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
-  branch: master # Branch to update
+  name: github
+  branch: master
   repo: LeoCantThinkOfAName/the-pedestrians
 
 media_folder: static/assets
@@ -9,7 +9,7 @@ public_folder: assets
 collections:
   - label: "中文版"
     name: "tw-post"
-    folder: "content"
+    folder: ""
     filter: { field: "lang", value: "zh-TW" }
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"

@@ -3,8 +3,8 @@
   border-top: 5px double;
   border-bottom: 5px double;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 0.5rem 0;
   margin: 1rem 0;
 
@@ -18,5 +18,10 @@
 .share-btn {
   background: none;
   border: 0px;
+  opacity: 0.75;
   cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
 }

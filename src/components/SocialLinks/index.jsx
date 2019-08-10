@@ -24,32 +24,17 @@ class SocialLinks extends Component {
         <div className="social-links">
           <button type="button" className="share-btn" title="Share on Twitter">
             <TwitterShareButton url={url} title={post.title}>
-              <TwitterIcon
-                size={iconSize}
-                iconBgStyle={{
-                  fill: "#505050",
-                }}
-              />
+              <TwitterIcon size={iconSize} />
             </TwitterShareButton>
           </button>
           <button type="button" className="share-btn" title="Share on Facebook">
             <FacebookShareButton url={url} quote={postNode.excerpt}>
-              <FacebookIcon
-                size={iconSize}
-                iconBgStyle={{
-                  fill: "#505050",
-                }}
-              />
+              <FacebookIcon size={iconSize} />
             </FacebookShareButton>
           </button>
           <button type="button" className="share-btn" title="Share on Line">
             <LineShareButton url={url} quote={postNode.excerpt}>
-              <LineIcon
-                size={iconSize}
-                iconBgStyle={{
-                  fill: "#505050",
-                }}
-              />
+              <LineIcon size={iconSize} />
             </LineShareButton>
           </button>
         </div>

@@ -17,12 +17,6 @@ class PostInfo extends Component {
           )}`}
           subtitle={`${postNode.timeToRead} min read`}
         />
-        <Link
-          className="category-link"
-          to={`/categories/${_.kebabCase(post.category)}`}
-        >
-          <div title="In category" subtitle={post.category} />
-        </Link>
       </div>
     );
   }

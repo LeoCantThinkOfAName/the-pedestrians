@@ -32,8 +32,13 @@
     line-height: 1.25rem;
     padding: 0.5rem 1rem;
     position: relative;
+    transition: 0.15s ease-in-out;
     margin: 0;
     margin-bottom: 0.25rem;
+
+    &:hover {
+      background: $theme-warn;
+    }
   }
 
   h5 {

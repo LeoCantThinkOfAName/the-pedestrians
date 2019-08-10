@@ -9,7 +9,7 @@ public_folder: assets
 collections:
   - label: "中文版"
     name: "tw-post"
-    folder: ""
+    folder: "zh-TW"
     filter: { field: "lang", value: "zh-TW" }
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"
@@ -29,7 +29,7 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
   - label: "英文版"
     name: "en-post"
-    folder: "content"
+    folder: "en"
     filter: { field: "lang", value: "en" }
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}.md"

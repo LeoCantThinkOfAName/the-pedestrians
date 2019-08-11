@@ -15,6 +15,7 @@ const config = {
   userEmail: "i7851@hotmail.com", // Email used for RSS feed's author segmentauthor segment.
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
   userLinks: [{ name: "github", link: "https://google.com" }],
+  copyright: "The pedestrians Post, LCTOAN.",
 };
 
 // Validate

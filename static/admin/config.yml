@@ -12,36 +12,38 @@ collections:
     folder: "contents/zh-TW"
     filter: { field: "lang", value: "zh-TW" }
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{day}}-{{month}}-{{year}}-{{slug}}"
     fields:
       - {
-          label: "Language",
+          label: "語系",
           name: "lang",
           widget: "select",
-          options: ["en", "zh-TW"],
+          options: ["zh-TW", "en"],
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Cover Image", name: "cover", widget: "image" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "標題", name: "title", widget: "string" }
+      - { label: "發布日期", name: "date", widget: "datetime" }
+      - { label: "封面圖片", name: "cover", widget: "image" }
+      - { label: "網址字串", name: "slug", widget: "string" }
+      - { label: "標籤", name: "tags", widget: "list" }
+      - { label: "簡介", name: "description", widget: "string" }
+      - { label: "本文", name: "body", widget: "markdown" }
   - label: "英文版"
     name: "en-post"
     folder: "contents/en"
     filter: { field: "lang", value: "en" }
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{day}}-{{month}}-{{year}}-{{slug}}"
     fields:
       - {
-          label: "Language",
+          label: "語系",
           name: "lang",
           widget: "select",
-          options: ["en", "zh-TW"],
+          options: ["zh-TW", "en"],
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Cover Image", name: "cover", widget: "image" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "標題", name: "title", widget: "string" }
+      - { label: "發布日期", name: "date", widget: "datetime" }
+      - { label: "封面圖片", name: "cover", widget: "image" }
+      - { label: "網址字串", name: "slug", widget: "string" }
+      - { label: "標籤", name: "tags", widget: "list" }
+      - { label: "簡介", name: "description", widget: "string" }
+      - { label: "本文", name: "body", widget: "markdown" }

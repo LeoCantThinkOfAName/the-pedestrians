@@ -3,23 +3,6 @@ const _ = require("lodash");
 const moment = require("moment");
 const siteConfig = require("./data/SiteConfig");
 
-// helper function
-// Remove trailing slashes unless it's only "/", then leave it as it is
-// const replaceTrailing = _path =>
-//   _path === `/` ? _path : _path.replace(/\/$/, ``);
-// // Remove slashes at the beginning and end
-// const replaceBoth = _path => _path.replace(/^\/|\/$/g, "");
-
-// // locales
-// const en = require("./src/lcocale/en.json");
-// const zhTW = require("./src/lcocale/zh-TW.json");
-
-// const locales = {
-//   en,
-//   "zh-TW": zhTW,
-// };
-// const defaultLang = "zh-TW";
-
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
@@ -58,14 +41,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions;
-  deletePage(page);
+exports.onCreatePage = ({ page }) => {
   page.context = {
     ...page.context,
     lang: page.context.intl.language,
   };
-  return createPage(page);
 };
 
 exports.createPages = async ({ graphql, actions }) => {

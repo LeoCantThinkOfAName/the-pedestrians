@@ -8,6 +8,9 @@ import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 
 // components
+// components
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import Advertisment from "../components/Ads";
 
 class Index extends React.Component {
@@ -47,8 +50,9 @@ class Index extends React.Component {
 
     return (
       <Layout location={location} title="Home">
+        <Header />
         <div
-          className="index-container"
+          className="index-container main-container"
           css={css`
             @media (min-width: 800px) {
               grid-template-columns: 1fr 1fr 1fr;
@@ -65,6 +69,7 @@ class Index extends React.Component {
           <PostListing postEdges={postEdges} grid={grid} />
           <Advertisment />
         </div>
+        <Footer />
       </Layout>
     );
   }

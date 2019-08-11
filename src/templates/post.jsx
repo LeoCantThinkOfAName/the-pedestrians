@@ -13,6 +13,10 @@ import SEO from "../components/SEO";
 import config from "../../data/SiteConfig";
 import "./post.scss";
 
+// components
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 export default class PostTemplate extends React.Component {
   constructor(props) {
     super(props);
@@ -53,33 +57,32 @@ export default class PostTemplate extends React.Component {
     } = pageContext;
     const expanded = !mobile;
     const postNode = data.markdownRemark;
-    const post = postNode.frontmatter;
+    const { title, tags, id, date } = postNode.frontmatter;
 
-    if (!post.id) {
-      post.id = slug;
-    }
-    if (!post.category_id) {
-      post.category_id = config.postDefaultCategoryID;
-    }
+    // if (!post.id) {
+    //   post.id = slug;
+    // }
 
     return (
       <Layout location={location}>
+        <Header date={date} />
         <div className="post-page">
           <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-            <link rel="canonical" href={`${config.siteUrl}${post.id}`} />
+            <title>{`${title} | ${config.siteTitle}`}</title>
+            <link rel="canonical" href={`${config.siteUrl}${id}`} />
           </Helmet>
           <SEO postPath={slug} postNode={postNode} postSEO />
           <PostCover postNode={postNode} coverClassName="post-cover" />
           <div className="post-page-contents">
             <div className="post">
               <div className="post-body">
-                <h1 className="post-header">{post.title}</h1>
+                <h1 className="post-header">{title}</h1>
                 <PostInfo postNode={postNode} />
                 <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               </div>
               <div className="post-meta">
-                <PostTags tags={post.tags} lang={lang} />
+                <PostTags tags={tags} lang={lang} />
+                <UserInfo config={config} expanded={expanded} />
                 <SocialLinks
                   postPath={slug}
                   postNode={postNode}
@@ -87,7 +90,6 @@ export default class PostTemplate extends React.Component {
                 />
               </div>
             </div>
-            <UserInfo config={config} expanded={expanded} />
 
             <PostSuggestions
               prevSlug={prevslug}
@@ -99,6 +101,7 @@ export default class PostTemplate extends React.Component {
             <Disqus postNode={postNode} expanded={expanded} />
           </div>
         </div>
+        <Footer />
       </Layout>
     );
   }

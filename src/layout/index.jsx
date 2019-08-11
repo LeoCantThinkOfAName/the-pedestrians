@@ -1,21 +1,22 @@
 import React from "react";
 import Helmet from "react-helmet";
+import { injectIntl } from "gatsby-plugin-intl";
 import Navigation from "../components/Navigation";
 import config from "../../data/SiteConfig";
+
 import "./index.scss";
 import "./global.scss";
 
-// components
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-
 class MainLayout extends React.Component {
   render() {
-    const { children, title } = this.props;
+    const { children, intl } = this.props;
     return (
-      <Navigation config={config} LocalTitle={title}>
+      <Navigation config={config} LocalTitle={intl.language}>
         <Helmet>
-          <meta name="description" content={config.siteDescription} />
+          <meta
+            name="description"
+            content={intl.formatMessage({ id: "siteDescription" })}
+          />
           <script
             async
             src="https://cse.google.com/cse.js?cx=000532077995990981312:j1kjweoe2ig"
@@ -25,12 +26,10 @@ class MainLayout extends React.Component {
             rel="stylesheet"
           />
         </Helmet>
-        <Header />
         {children}
-        <Footer />
       </Navigation>
     );
   }
 }
 
-export default MainLayout;
+export default injectIntl(MainLayout);

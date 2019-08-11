@@ -16,6 +16,7 @@ const config = {
   userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
   userLinks: [{ name: "github", link: "https://google.com" }],
   copyright: "The pedestrians Post, LCTOAN.",
+  siteDescription: "The pedestrians Post, LCTOAN.",
 };
 
 // Validate

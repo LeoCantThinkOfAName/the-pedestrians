@@ -25,10 +25,12 @@ const reducer = (state, action) => {
     case "setResults":
       return { ...state, results: payload };
     case "initSearch":
+      console.log(payload.results);
       return {
+        display: true,
         term: payload.term,
         results: payload.results,
-        list: payload.results.data.items,
+        list: payload.results.data.items ? payload.results.data.items : [],
       };
     case "display":
       return {

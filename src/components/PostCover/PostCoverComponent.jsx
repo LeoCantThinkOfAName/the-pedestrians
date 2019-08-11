@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { css } from "@emotion/core";
 import Img from "gatsby-image";
-import path from "path";
 import "./PostCover.scss";
 
 class PostCover extends Component {
@@ -10,15 +9,12 @@ class PostCover extends Component {
     const { imageSize } = postNode;
     const post = postNode.frontmatter ? postNode.frontmatter : postNode;
     const coverNodeList = fileEdges.filter(fileNode => {
+      const imagePath = `/assets/${fileNode.node.relativePath}`;
+
       if (fileNode.node.childImageSharp === null) return false;
-
-      if (
-        fileNode.node.absolutePath.indexOf(
-          path.join("/static/assets/", post.cover)
-        ) !== -1
-      )
+      if (imagePath.indexOf(post.cover) !== -1) {
         return true;
-
+      }
       return false;
     });
 
@@ -34,7 +30,7 @@ class PostCover extends Component {
               height: 400px;
             }
             @media (min-width: 800px) {
-              height: ${imageSize || 800}px;
+              height: ${imageSize || 400}px;
             }
           `}
         />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import moment from "moment";
 import PostTags from "../PostTags";
 import PostCover from "../PostCover";
@@ -12,7 +12,7 @@ class PostPreview extends Component {
     return (
       <div className="single-post">
         <Link
-          to={`/${postInfo.lang}${postInfo.path}`}
+          to={postInfo.path}
           title={postInfo.title}
           className="post-cover-link"
         >
@@ -20,7 +20,7 @@ class PostPreview extends Component {
         </Link>
         <div className="post-preview-info">
           <Link
-            to={`/${postInfo.lang}${postInfo.path}`}
+            to={postInfo.path}
             style={{ textDecoration: "none" }}
             title={postInfo.title}
           >

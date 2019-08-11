@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
+import { Link, injectIntl } from "gatsby-plugin-intl";
 import "./PostSuggestions.scss";
 
-export default class PostSuggestions extends Component {
+class PostSuggestions extends Component {
   render() {
-    const { prevSlug, prevTitle, nextSlug, nextTitle, lang } = this.props;
+    const { prevSlug, prevTitle, nextSlug, nextTitle, intl } = this.props;
 
     return (
       <div className="post-suggestions md-grid md-cell--12">
         {nextSlug ? (
           <Link to={nextSlug} className="post-suggestion next-suggestion">
             <div className="headline-container hide-on-mobile">
-              <p>Next Issue</p>
+              <p>{intl.formatMessage({ id: "next-issue" })}</p>
               <h5>{nextTitle}</h5>
             </div>
           </Link>
@@ -21,7 +21,7 @@ export default class PostSuggestions extends Component {
         {prevSlug ? (
           <Link to={prevSlug} className="post-suggestion prev-suggestion">
             <div className="headline-container">
-              <p>Prev Issue</p>
+              <p>{intl.formatMessage({ id: "prev-issue" })}</p>
               <h5>{prevTitle}</h5>
             </div>
           </Link>
@@ -32,3 +32,5 @@ export default class PostSuggestions extends Component {
     );
   }
 }
+
+export default injectIntl(PostSuggestions);

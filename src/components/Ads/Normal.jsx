@@ -1,9 +1,12 @@
 import React from "react";
+import { FormattedMessage } from "gatsby-plugin-intl";
 
 const Normal = () => {
   return (
     <div className="single-post index-ad">
-      <h5 className="index-ad-title">Advertisements</h5>
+      <h5 className="index-ad-title">
+        <FormattedMessage id="advertisements" />
+      </h5>
       <div className="index-ad-wrapper">
         <div
           className="custom-ad-placeholder"

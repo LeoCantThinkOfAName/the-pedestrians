@@ -17,7 +17,14 @@ class Footer extends Component {
             {new Date().getFullYear() === 2019
               ? new Date().getFullYear()
               : `2019 - ${new Date().getFullYear()}`}
-            , The Pedestrians Post by <a href="https://google.com">LCTOAN.</a>
+            , The Pedestrians Post by{" "}
+            <a
+              href="https://google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LCTOAN.
+            </a>
           </p>
         </div>
         <div className="color-blocks">

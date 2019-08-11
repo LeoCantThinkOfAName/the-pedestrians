@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { Link } from "gatsby";
+import { Link, injectIntl, FormattedMessage } from "gatsby-plugin-intl";
 
 // components
 import Logo from "./Logo";
@@ -10,7 +10,9 @@ import Search from "../Search";
 // styles
 import "./Header.scss";
 
-const Header = () => {
+const Header = props => {
+  const { date } = props;
+
   return (
     <>
       <LangMenu />
@@ -19,10 +21,16 @@ const Header = () => {
           <Logo />
         </Link>
         <div className="title-container">
-          <h1 className="title">subtitle</h1>
+          <h1 className="title">
+            <FormattedMessage id="subtitle" />
+          </h1>
         </div>
         <div className="publish-strip">
-          <div>{moment().format("dddd, MMMM DD YYYY")}</div>
+          <div>
+            {date
+              ? moment(date).format("dddd, MMMM DD YYYY")
+              : moment().format("dddd, MMMM DD YYYY")}
+          </div>
           <Search />
         </div>
       </header>
@@ -30,4 +38,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default injectIntl(Header);

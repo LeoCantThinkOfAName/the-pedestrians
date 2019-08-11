@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { StaticQuery, graphql } from "gatsby";
 import PostCover from "./PostCoverComponent";
-import InPostCover from "./InPostCoverComponent";
 
 class queryWrapper extends Component {
   render() {
@@ -15,6 +14,7 @@ class queryWrapper extends Component {
                 node {
                   id
                   absolutePath
+                  relativePath
                   childImageSharp {
                     id
                     resolutions {

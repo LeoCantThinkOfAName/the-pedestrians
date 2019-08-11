@@ -1,4 +1,5 @@
 import React from "react";
+import { FormattedMessage } from "gatsby-plugin-intl";
 
 // components
 import SearchResultsItem from "./SearchResultsItem";
@@ -19,7 +20,7 @@ const SearchResults = ({ state, dispatch }) => {
         type="button"
         onClick={() => closeModal()}
       >
-        close
+        <FormattedMessage id="close-modal" />
       </button>
       <div className="search-modal-frame">
         <div className="search-results-warpper">

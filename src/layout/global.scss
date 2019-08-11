@@ -6,7 +6,10 @@
 }
 
 body {
-  background: $theme-bg;
+  background-color: $theme-bg;
+  background-image: url("./noise.png");
+  background-size: 300px;
+  background-repeat: repeat;
   padding: 10px;
 }
 
@@ -63,6 +66,11 @@ a {
       grid-area: $post;
     }
   }
+}
+
+.main-container {
+  flex-grow: 1;
+  height: 100%;
 }
 
 @media screen and (min-width: 800px) {

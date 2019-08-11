@@ -1,25 +1,36 @@
+@import "../../layout/theme.scss";
+
 .about-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    .about-img {
-        border-radius: 50%;
-        width: 300px;
-        height: 300px;
-        margin: 10px 0;
+  .about-img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    margin: 10px 0;
 
-        @media (max-width: 360px - 1px) {
-            padding: 20px;
-        }
+    @media (max-width: 360px - 1px) {
+      padding: 20px;
     }
+  }
 
-    .about-text {
-        max-width: 640px;
-        margin: 20px 0 !important;
+  .about-text {
+    max-width: 640px;
+    margin: 20px 0 !important;
 
-        @media (max-width: 360px - 1px) {
-            margin: 5px 0 !important;
-        }
+    @media (max-width: 360px - 1px) {
+      margin: 5px 0 !important;
     }
+  }
+}
+
+.about-article {
+  border-bottom: 1px dashed rgba($theme-black, 0.5);
+  padding: 20px 0;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
 }

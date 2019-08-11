@@ -1,6 +1,7 @@
 @import "../../layout/theme.scss";
 
 .header {
+  flex-shrink: 0;
   margin: 10px 0;
   border-top: 3px solid;
   padding: 5px 0 0;
@@ -11,7 +12,7 @@
   position: relative;
 
   &::before {
-    background: $theme-black;
+    background-color: $theme-black;
     content: "";
     display: block;
     height: 1px;
@@ -24,7 +25,10 @@
 }
 
 .title {
-  background: $theme-bg;
+  background-color: $theme-bg;
+  background-image: url("../../layout/noise.png");
+  background-size: 300px;
+  background-repeat: repeat;
   font-size: 14px;
   display: inline-block;
   line-height: 14px;
@@ -49,6 +53,7 @@
 
 .lang-selector {
   display: flex;
+  flex-shrink: 0;
   font-size: 0.8rem;
   font-weight: 600;
   justify-content: flex-end;

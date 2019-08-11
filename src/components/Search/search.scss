@@ -5,8 +5,16 @@
   text-align: left;
 }
 
+.search-icon {
+  height: 1rem;
+  margin-bottom: -0.2rem;
+}
+
 .search-modal {
-  background: $theme-bg;
+  background-color: $theme-bg;
+  background-image: url("../../layout/noise.png");
+  background-size: 300px;
+  background-repeat: repeat;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -37,6 +45,10 @@
 }
 
 .search-modal-frame {
+  background-color: $theme-bg;
+  background-image: url("../../layout/noise.png");
+  background-size: 300px;
+  background-repeat: repeat;
   border: 3px solid;
   height: 100%;
   overflow: hidden;
@@ -57,7 +69,10 @@
 }
 
 .search-modal-title {
-  background: $theme-bg;
+  background-color: $theme-bg;
+  background-image: url("../../layout/noise.png");
+  background-size: 300px;
+  background-repeat: repeat;
   font-size: 1.5rem;
   font-family: $display-font;
   margin: 0;
@@ -114,6 +129,7 @@
 
 .search-pagination {
   padding: 40px 0 80px;
+  text-align: center;
 }
 
 .searchbox-wrapper {
@@ -123,6 +139,7 @@
 .searchbox-input {
   border: 0;
   background: none;
+  font-size: 1rem;
   outline: none;
   padding: 0.5rem 0.5rem;
 

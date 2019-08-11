@@ -1,5 +1,33 @@
-.user-info {
-    p {
-        margin: 15px 0;
-    }
+.author-info {
+  align-items: center;
+  display: flex;
+  margin: 2rem 0;
+}
+
+.author-image {
+  margin: 0 1rem 0 0;
+}
+
+.author-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.author-description {
+  margin: 0.5rem 0;
+}
+
+.author-links {
+  margin: 0.5rem 0;
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
 }
